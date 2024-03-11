@@ -1,3 +1,5 @@
+###### Import necessary python packages, libraries, and models ######
+
 # Load pandas, SpaCy, textblob, wordcloud, pyplot, and defaultdict 
 
 import spacy
@@ -96,7 +98,7 @@ print(f"Lemmatized text used for analysis: {text}\nPolarity score: {polarity_sco
 
 ###### Testing the model at different indices ######
 
-# Amend Index value on lines 70, 92, and 93
+# To test. please amend the Index values on lines 72, 94, and 95
 
 # Index[100]
 # Title of the review: Awesome having Show!
