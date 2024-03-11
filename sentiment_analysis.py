@@ -11,7 +11,7 @@ from collections import defaultdict
 # Load spaCy's small-sized English model
 nlp = spacy.load('en_core_web_sm')
 
-# Load Amazon dataset (source: Kaggle)
+# Load Amazon dataset (source: https://www.kaggle.com/datasets/datafiniti/consumer-reviews-of-amazon-products)
 df = pd.read_csv('Datafiniti_Amazon_Consumer_Reviews_of_Amazon_Products.csv',low_memory=False)
 
 
