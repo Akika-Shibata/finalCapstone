@@ -11,7 +11,7 @@ from collections import defaultdict
 # Load spaCy's small-sized English model
 nlp = spacy.load('en_core_web_sm')
 
-# Load Amazon dataset
+# Load Amazon dataset (source: Kaggle)
 df = pd.read_csv('Datafiniti_Amazon_Consumer_Reviews_of_Amazon_Products.csv',low_memory=False)
 
 
@@ -139,6 +139,4 @@ print("/nTokenized sentences used to calculate the semantic similarity scores: "
 for sentences in processed[300:305]:
     print(sentences)
 
-# Output to be discussed in 'sentiment_analysis_report'
-
-
+# Output to be discussed in 'sentiment_analysis_report'.
