@@ -140,4 +140,5 @@ for sentences in processed[300:305]:
     print(sentences)
 
 # Output to be discussed in the 'sentiment_analysis_report' in a separate document.
-# Next steps: add word cloud of positive and negative reviews
+
+# Next steps: add word cloud of positive and negative reviews and display them
