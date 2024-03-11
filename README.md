@@ -1,4 +1,4 @@
-# Sentiment Analysis of Amazon product reviews
+# Sentiment Analysis of Amazon Product Reviews
 
 
 ## 1. Introduction
