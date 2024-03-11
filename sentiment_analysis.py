@@ -77,7 +77,7 @@ def analyze_polarity(text):
     
     return polarity
 
-# Running the sample review through the ;analyze_polarity' function to calculate the polarity score
+# Running the sample review through the 'analyze_polarity' function to calculate the polarity score
 polarity_score = analyze_polarity(text)
 
 # Calculates the sentiment based on the polarity score 
@@ -114,6 +114,31 @@ print(f"Lemmatized text used for analysis: {text}\nPolarity score: {polarity_sco
 # Sentiment: positive
 
 
+###### Semantic Similarity between a selection of Reviews ######
 
+# This requires the medium English model (the small model has no word vector loaded, 
+# so the result of the Doc.similarity method will be based on the tagger, parser and NER
+# which may not give useful similarity jodgements.)
+
+# Load spaCy's small-sized English model
+nlp = spacy.load('en_core_web_md')
+
+#review_to_compare = processed[5]
+selection_of_reviews = processed[300:305]
+
+# Comparing the semantic similarity of reviews with each other. 
+print("\nSemantic Similarity of the reviews:")
+for token in selection_of_reviews:
+    token = nlp(token)
+    for token_ in selection_of_reviews:
+        token_ = nlp(token_)
+        print(token.similarity(token_))
+
+# Returning the tokenized sentences used for the semantic similarity above
+print("/nTokenized sentences used to calculate the semantic similarity scores: ")
+for sentences in processed[300:305]:
+    print(sentences)
+
+# Output to be discussed in 'sentiment_analysis_report'
 
 
