@@ -1,13 +1,13 @@
 # Sentiment Analysis of Amazon product reviews
 
------------
+
 ## 1. Introduction
 
 
 Sentiment analysis is an important and powerful tool which provides valuable insights by detecting positive, negative, or neutral emotions based on a piece of text using natural language processing (NLP). Ths is highly relevant in our daily lives, such as in businesses (analyzing customer feedback of product, brand, services, or campaigns), analyzing sentiment on social media and news topics, and so on.
 
 
------------
+
 ## 2. About this programme
 
 
@@ -24,7 +24,6 @@ Semantic similarities of the reviews were calculated against each other to gain 
 
 
 
------------
 ## 3. Installations needed to run this project (Windows users)
 
 Please run this either in the Command Prompt or in the terminal of your application (e.g. VS Code).
