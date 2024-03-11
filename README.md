@@ -27,14 +27,14 @@ Semantic similarities of the reviews were calculated against each other to gain 
 ## 3. Installations needed to run this project (Windows users)
 
 Please run this either in the Command Prompt or in the terminal of your application (e.g. VS Code).
-py -m pip install --user spacy textblob
+- py -m pip install --user spacy textblob
 
-py -m pip install --user matplotlib
+- py -m pip install --user matplotlib
 
-py -m pip install --user pandas
+- py -m pip install --user pandas
 
-py -m pip install --user wordcloud
+- py -m pip install --user wordcloud
 
-py -m spacy download en_core_web_sm
+- py -m spacy download en_core_web_sm
 
-py -m spacy download en_core_web_md
+- py -m spacy download en_core_web_md
