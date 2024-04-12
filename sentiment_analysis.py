@@ -82,11 +82,15 @@ def analyze_polarity(text):
 # Running the sample review through the 'analyze_polarity' function to calculate the polarity score
 polarity_score = analyze_polarity(text)
 
+
+
 # Calculates the sentiment based on the polarity score 
 if polarity_score > 0:
     sentiment = 'positive'
+#    positive_words[text.lower()] += 1
 elif polarity_score < 0:
     sentiment = 'negative'
+#    negative_words[text.lower()] += 1
 else:
     sentiment = 'neutral'
 
@@ -122,19 +126,23 @@ print(f"Lemmatized text used for analysis: {text}\nPolarity score: {polarity_sco
 # so the result of the Doc.similarity method will be based on the tagger, parser and NER
 # which may not give useful similarity jodgements.)
 
-# Load spaCy's small-sized English model
+# Load spaCy's medium-sized English model
 nlp = spacy.load('en_core_web_md')
 
 #review_to_compare = processed[5]
 selection_of_reviews = processed[300:305]
 
+
 # Comparing the semantic similarity of reviews with each other. 
 print("\nSemantic Similarity of the reviews:")
-for token in selection_of_reviews:
+for i, token in enumerate(selection_of_reviews):
     token = nlp(token)
-    for token_ in selection_of_reviews:
+    for j, token_ in enumerate(selection_of_reviews):
         token_ = nlp(token_)
-        print(token.similarity(token_))
+        similarity_score = token.similarity(token_)
+        print(f"Similarity between review {300 + i} and review {300 + j}: {similarity_score}")
+
+
 
 # Returning the tokenized sentences used for the semantic similarity above
 print("/nTokenized sentences used to calculate the semantic similarity scores: ")
@@ -143,4 +151,42 @@ for sentences in processed[300:305]:
 
 # Output to be discussed in the 'sentiment_analysis_report' in a separate document.
 
-# Next steps: add word cloud of positive and negative reviews and display them
+
+###### Word cloud ######
+# Initialize dictionaries to hold positive and negative words
+positive_words = defaultdict(int)
+negative_words = defaultdict(int)
+
+
+# The reviews are split into words, they are processed by TextBlob which brings out polarity score.
+# If the polarity score is greater than 0, the words are added to the positive_words dictionary;
+# if the polarity score is lower than 0, the words are added to the negative_words dictionary
+for sentence in processed:
+    words = sentence.split()
+
+    for word in words:
+        blob = TextBlob(word)
+        polarity = blob.sentiment.polarity
+
+        if polarity > 0:
+            positive_words[word.lower()] += 1
+        elif polarity < 0:
+            negative_words[word.lower()] += 1
+
+
+# Generating word cloud for positive and negative words
+pos_wordcloud = WordCloud(width=400, height=200, background_color ='white').generate_from_frequencies(positive_words)
+neg_wordcloud = WordCloud(width=400, height=200, background_color ='white').generate_from_frequencies(negative_words)
+
+
+fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+
+ax[0].imshow(pos_wordcloud, interpolation='bilinear')
+ax[0].set_title('Positive Words')
+ax[0].axis('off')
+
+ax[1].imshow(neg_wordcloud, interpolation='bilinear')
+ax[1].set_title('Negative Words')
+ax[1].axis('off')
+
+plt.show()
